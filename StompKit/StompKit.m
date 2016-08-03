@@ -244,6 +244,10 @@
     [self.client sendFrameWithCommand:kCommandUnsubscribe
                               headers:@{kHeaderID: self.identifier}
                                  body:nil];
+    /* Remove logic is added, thats not the perfect place to add it, 
+     but architecture is not flexible, so it will be here.
+     */
+    [self.client.subscriptions removeObjectForKey:self.identifier];
 }
 
 - (NSString *)description {
